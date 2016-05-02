@@ -1,0 +1,2 @@
+MainPackage=C:\Users\garvj\Desktop\Ebookauthor - Copy\StreamerAuthor\bin\x86\Release\StreamerAuthor_1.0.10.0_x86.appx
+SymbolPackage=C:\Users\garvj\Desktop\streamerAuthor\StreamerAuthor_1.0.10.0_Test\StreamerAuthor_1.0.10.0_x86.appxsym

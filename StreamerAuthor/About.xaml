@@ -1,0 +1,59 @@
+﻿<Page
+    x:Class="StreamerAuthor.About"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:StreamerAuthor"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="SplitViewStyles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
+    <SplitView x:Name="MySplitView" DisplayMode="CompactOverlay"  IsPaneOpen="False" 
+               CompactPaneLength="50" OpenPaneLength="170" >
+        <SplitView.Pane>
+            <StackPanel Background="#AD2920">
+                <Button x:Name="HamburgerButton" FontFamily="Segoe MDL2 Assets" Content="&#xE700;"
+                    Width="50" Height="50" Background="Transparent" Click="HamburgerButton_Click"/>
+
+                <RadioButton Tag="" Content="My Books"
+                 Style="{StaticResource SplitViewNavButtonStyle}"
+                Click="MenuButton1_Click" />
+
+                <RadioButton x:Name="MenuButton2" Tag="" Style="{StaticResource SplitViewNavButtonStyle}" Content="Upload Books"
+                       Click="MenuButton2_Click"/>
+
+
+
+                <RadioButton x:Name="wallet" Tag="" Content="My Wallet"  
+                 Style="{StaticResource SplitViewNavButtonStyle}"
+                Click="RadioButton_Click" />
+
+                <RadioButton x:Name="MenuButton4" Tag="" Content="About" IsChecked="True" Style="{StaticResource SplitViewNavButtonStyle}"
+                         Click="MenuButton4_Click"/>
+
+                <RadioButton x:Name="MenuButton3" Tag="" Content="SignOut"
+                        Style="{StaticResource SplitViewNavButtonStyle}" Click="MenuButton3_Click"/>
+
+            </StackPanel>
+        </SplitView.Pane>
+
+        <SplitView.Content>
+            <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0.06*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Border Background="#AD2920" Grid.Row="0">
+                    <TextBlock FontSize="36" Foreground="White"  Text="   About"  />
+                </Border>
+                <TextBlock x:Name="IntroBox" Grid.Row="1" FontFamily="Segoe UI" TextWrapping="WrapWholeWords" FontSize="20" Foreground="Black" TextLineBounds="Full" TextAlignment="Justify" Margin="10,10,20,10"/>
+            </Grid>
+        </SplitView.Content>
+    </SplitView>
+</Page>

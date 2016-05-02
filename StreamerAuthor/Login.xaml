@@ -1,0 +1,53 @@
+﻿<Page
+   
+    x:Class="StreamerAuthor.Login"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:StreamerAuthor"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+
+    <Grid RequestedTheme="Dark">
+        <Grid.Background>
+            <ImageBrush ImageSource="Assets/writing2.jpg"  Stretch="UniformToFill"/>
+        </Grid.Background>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.3*"/>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="0.3*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.4*"/>
+            <ColumnDefinition Width="0.4*"/>
+            <ColumnDefinition Width="0.4*"/>
+        </Grid.ColumnDefinitions>
+        <ProgressBar x:Name="Loading" Grid.RowSpan="3" Grid.ColumnSpan="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Visibility="Collapsed"/>
+
+        <Grid Grid.Column="1" Grid.Row="1"  BorderThickness="2,2,2,6" BorderBrush="#FFC9C9C9">
+            <Grid.Background>
+                <SolidColorBrush Color="White" Opacity="0.7"/>
+            </Grid.Background>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.33*"/>
+                <RowDefinition Height="0.1*"/>
+                <RowDefinition Height="0.1*"/>
+                <RowDefinition Height="0.01*"/>
+
+                <RowDefinition Height="0.1*"/>
+                <RowDefinition Height="0.01*"/>
+
+                <RowDefinition Height="0.1*"/>
+
+            </Grid.RowDefinitions>
+            <TextBlock TextAlignment="Center" Foreground="Black"  Text="E-Book Streamer Author" FontSize="24" FontFamily="Yu Gothic UI" />
+            <TextBox  x:Name="UserName" PlaceholderText="Enter UserName" Margin="10,0" InputScope="AlphanumericFullWidth"  Opacity="50" Foreground="Black" Grid.Row="1" Background="Transparent" BorderBrush="#FF933729" BorderThickness="0,0,0,5" Padding="10,10,6,5" >
+            </TextBox>
+            <PasswordBox KeyDown="Password_KeyDown" x:Name="Password" PlaceholderText="Enter Password" Margin="10,0"  Opacity="50" Foreground="Black" Background="Transparent" Grid.Row="2" BorderBrush="#FF933729" BorderThickness="0,0,0,5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Padding="10,10,6,0"/>
+            <Button Grid.Row="4" Content="LOG IN" Foreground="White" HorizontalAlignment="Stretch" Margin="10,0" VerticalAlignment="Stretch"  Tapped="Image_Tapped" Background="#FF933729"/>
+            <Button Grid.Row="6"  Content="SIGN UP" Foreground="White"  HorizontalAlignment="Stretch" Margin="10,0" VerticalAlignment="Stretch"  Tapped="Image_Tapped_1" Background="#FF933729"/>
+        </Grid>
+    </Grid>
+
+</Page>
