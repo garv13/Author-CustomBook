@@ -125,7 +125,7 @@ namespace StreamerAuthor
                     a.password = Password.Password;
                     a.username = UserName.Text;
                     a.wallet = 0;
-                    a.books = "";
+                   // a.books = "";
                     await App.MobileService.GetTable<Author>().InsertAsync(a);
                     Loading.Visibility = Visibility.Collapsed;
                     Windows.UI.Popups.MessageDialog mess = new MessageDialog("Author has been created!");
