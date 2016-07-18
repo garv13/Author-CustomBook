@@ -62,9 +62,9 @@ namespace StreamerAuthor
                 items2 = await Table2.Where(Author
                                => Author.Id == testlol2).ToCollectionAsync();
                 Author a = items2[0];
-                string[] b = a.books.Split(',');
+                //string[] b = a.books.Split(',');
                 items = await Table.Where(Book
-                            => b.Contains(Book.Id)).ToCollectionAsync();
+                            => Book.PublisherId==a.Id).ToCollectionAsync();
                 Dashboard temp;
                 foreach (Book lol in items)
                 {
