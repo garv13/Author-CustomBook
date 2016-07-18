@@ -126,7 +126,7 @@ namespace StreamerAuthor
                 item.Publisher = testlol;
                 item.Chapters = int.Parse(NoOfLessons.Text);
                 item.IsReady = false;
-
+                item.PublisherId = a.Id;
 
                 item.ResourceName = item.Title + Guid.NewGuid().ToString();
                 item.ResourceName2 = item.Title + Guid.NewGuid().ToString();
@@ -180,8 +180,7 @@ namespace StreamerAuthor
 
                 item.ImageUri2 = blockBlob.StorageUri.PrimaryUri.ToString();
                 await App.MobileService.GetTable<Book>().InsertAsync(item);
-                a.books += item.Id + ",";
-                await Table2.UpdateAsync(a);
+               
                 Loading.Visibility = Visibility.Collapsed;
                 MessageDialog mess = new MessageDialog("Your Book Has been uploaded successfully!");
                 await mess.ShowAsync();
