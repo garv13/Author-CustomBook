@@ -150,8 +150,8 @@ namespace StreamerAuthor
 
 
 
-                var credentials = new StorageCredentials("ebookstreamer2", "XJ+r94AJ31aNTKfuImglzEbelP20fSESTxH1Z3SSiMLetYsRWtVrkDsDBuEgPQAiWgTdkkpfu0m4eSHbm7w/KA==");
-                var client = new CloudBlobClient(new Uri("https://ebookstreamer2.blob.core.windows.net/"), credentials);
+                var credentials = new StorageCredentials("bookstreamer", "fgxdB/N0PRef6cncd1VArElzLFbQKtCLgNErRIHMXRQDj0sANyPv4opGeEbB4YTd6aGj6wVEdShmWwT0nS9lcQ==");
+                var client = new CloudBlobClient(new Uri("https://bookstreamer.blob.core.windows.net/"), credentials);
                 var container = client.GetContainerReference("coverpage");
                 await container.CreateIfNotExistsAsync();
 
