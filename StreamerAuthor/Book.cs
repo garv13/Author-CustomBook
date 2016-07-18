@@ -10,6 +10,7 @@ namespace StreamerAuthor
     class Book
     {
         public string Id { get; set; }
+        public string PublisherId { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
         public int Price { get; set; }
@@ -20,33 +21,11 @@ namespace StreamerAuthor
         public string PageNo { get; set; }
         public string ChapterCost { get; set; }
         public int Chapters { get; set; }
-        public string ChapterName { get; set; }
-        //for file
-        //[JsonProperty(PropertyName = "containerName")]
-        //public string ContainerName { get; set; }
-
-        //[JsonProperty(PropertyName = "resourceName")]
         public string ResourceName { get; set; }
-
-        //[JsonProperty(PropertyName = "sasQueryString")]
-        //public string SasQueryString { get; set; }
-
-        //[JsonProperty(PropertyName = "imageUri")]
         public string ImageUri { get; set; }
-
-        ////for cover image
-        //[JsonProperty(PropertyName = "containerName2")]
-        //public string ContainerName2 { get; set; }
-
-        //[JsonProperty(PropertyName = "resourceName2")]
         public string ResourceName2 { get; set; }
-
-        //[JsonProperty(PropertyName = "sasQueryString2")]
-        //public string SasQueryString2 { get; set; }
-
-        //[JsonProperty(PropertyName = "imageUri2")]
         public string ImageUri2 { get; set; }
-
+        public string ChapterName { get; set; }
 
     }
 }
