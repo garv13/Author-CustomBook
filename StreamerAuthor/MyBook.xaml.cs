@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.Storage;
@@ -33,7 +34,7 @@ namespace StreamerAuthor
         private IMobileServiceTable<Chapter> Table3 = App.MobileService.GetTable<Chapter>();
         private MobileServiceCollection<Chapter, Chapter> items3;
         List<Dashboard> dl = new List<Dashboard>();
-
+        string testlol2;
         public MyBook()
         {
             this.InitializeComponent();
@@ -57,65 +58,70 @@ namespace StreamerAuthor
                 StorageFolder folder2 = Windows.Storage.ApplicationData.Current.LocalFolder;
                 StorageFile sampleFile2 = await folder.GetFileAsync("sample2.txt");
 
-                string testlol2 = await Windows.Storage.FileIO.ReadTextAsync(sampleFile2);
+                testlol2 = await Windows.Storage.FileIO.ReadTextAsync(sampleFile2);
                 //we have id
-                items2 = await Table2.Where(Author
-                               => Author.Id == testlol2).ToCollectionAsync();
-                Author a = items2[0];
-                //string[] b = a.books.Split(',');
-                items = await Table.Where(Book
-                            => Book.PublisherId==a.Id).ToCollectionAsync();
-                Dashboard temp;
-                foreach (Book lol in items)
-                {
-                    //if (lol.Id == "A2592E4D-8663-4A2D-869B-CCDE2FB2A039")
-                    //{ }
-                    //else
-                    //{
-                        temp = new Dashboard();
-                        int downloads = 0;
-                        items3 = await Table3.Where(Chapter
-                                    => Chapter.bookid == lol.Id).ToCollectionAsync();
-                        foreach (Chapter lol2 in items3)
-                        {
-                            downloads += lol2.downloads;
-                        }
-                        temp.downloads = downloads.ToString();
-                        temp.title = lol.Title;
-                        temp.Id = lol.Id;
-                        if (lol.IsReady)
-                            temp.status = "In Store";
-                        else
-                            temp.status = "Processing";
-
-
-                        BitmapImage im = new BitmapImage();
-                        im.DecodePixelHeight = 300;
-                        im.DecodePixelWidth = 200;
-                        im.UriSource = new Uri(lol.ImageUri2);
-                        im.DecodePixelHeight = 300;
-                        im.DecodePixelWidth = 200;
-                        temp.image = im;
-
-                        dl.Add(temp);
-                    }
-                //}
-                if (dl.Count != 0)
-                {
-
-                    event3.ItemsSource = dl;
-                    Loading.Visibility = Visibility.Collapsed;
-                }
-                else
-                {
-                    MessageDialog msgbox = new MessageDialog("No Book Published");
-                    await msgbox.ShowAsync();
-                    Loading.Visibility = Visibility.Collapsed;
-                }
+                await loadDashboard(0);
             }
             catch(Exception)
             {
                 MessageDialog msgbox = new MessageDialog("Sorry can't update now");
+                await msgbox.ShowAsync();
+                Loading.Visibility = Visibility.Collapsed;
+            }
+        }
+
+        private async Task loadDashboard(int i)
+        {
+            items2 = await Table2.Where(Author
+                               => Author.Id == testlol2).ToCollectionAsync();
+            Author a = items2[0];
+            //string[] b = a.books.Split(',');
+            items = await Table.Skip(i*15).Take(15).Where(Book
+                        => Book.PublisherId == a.Id).ToCollectionAsync();
+            Dashboard temp;
+            foreach (Book lol in items)
+            {
+                //if (lol.Id == "A2592E4D-8663-4A2D-869B-CCDE2FB2A039")
+                //{ }
+                //else
+                //{
+                temp = new Dashboard();
+                int downloads = 0;
+                items3 = await Table3.Where(Chapter
+                            => Chapter.bookid == lol.Id).ToCollectionAsync();
+                foreach (Chapter lol2 in items3)
+                {
+                    downloads += lol2.downloads;
+                }
+                temp.downloads = downloads.ToString();
+                temp.title = lol.Title;
+                temp.Id = lol.Id;
+                if (lol.IsReady)
+                    temp.status = "In Store";
+                else
+                    temp.status = "Processing";
+
+
+                BitmapImage im = new BitmapImage();
+                im.DecodePixelHeight = 300;
+                im.DecodePixelWidth = 200;
+                im.UriSource = new Uri(lol.ImageUri2);
+                im.DecodePixelHeight = 300;
+                im.DecodePixelWidth = 200;
+                temp.image = im;
+
+                dl.Add(temp);
+            }
+            //}
+            if (dl.Count != 0)
+            {
+
+                event3.ItemsSource = dl;
+                Loading.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                MessageDialog msgbox = new MessageDialog("No Book Published");
                 await msgbox.ShowAsync();
                 Loading.Visibility = Visibility.Collapsed;
             }
