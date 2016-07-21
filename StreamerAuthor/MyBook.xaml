@@ -92,6 +92,10 @@
                     <Button Click="Button_Click" Background="#AD2920" Margin="15" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Grid.Column="2"  >
                         <Image VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Source="Assets/search-icon-hi.png"/>
                     </Button>
+                    <HyperlinkButton Margin="15"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="0" Click="HyperlinkButton_Click_1" Content="Previous page" FontSize="{StaticResource SplitViewLargeNavFontSize}" />
+                    <HyperlinkButton Margin="15"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="3" Click="HyperlinkButton_Click"  Content="Next Page" FontSize="{StaticResource SplitViewLargeNavFontSize}" />
+
+
                 </Grid>
                 <GridView    
                     Grid.Row="2"

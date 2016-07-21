@@ -34,6 +34,7 @@ namespace StreamerAuthor
         private IMobileServiceTable<Chapter> Table3 = App.MobileService.GetTable<Chapter>();
         private MobileServiceCollection<Chapter, Chapter> items3;
         List<Dashboard> dl = new List<Dashboard>();
+        int pageCount = 0;
         string testlol2;
         public MyBook()
         {
@@ -72,6 +73,8 @@ namespace StreamerAuthor
 
         private async Task loadDashboard(int i,string query)
         {
+            Loading.Visibility = Visibility.Visible;
+            Loading.IsIndeterminate = true;
             dl = new List<Dashboard>();
             bool flag = false;
             //items2 = await Table2.Where(Author
@@ -213,6 +216,19 @@ namespace StreamerAuthor
                     Loading.Visibility = Visibility.Collapsed;
                 }
             }
+        }
+
+        private async void HyperlinkButton_Click(object sender, RoutedEventArgs e)
+        {
+            pageCount++;
+            await loadDashboard(pageCount, null);
+        }
+
+        private async void HyperlinkButton_Click_1(object sender, RoutedEventArgs e)
+        {
+            if (pageCount > 0)
+                pageCount--;
+            await loadDashboard(pageCount, null);
         }
     }
 }
