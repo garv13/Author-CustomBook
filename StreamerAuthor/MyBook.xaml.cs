@@ -72,6 +72,7 @@ namespace StreamerAuthor
 
         private async Task loadDashboard(int i,string query)
         {
+            dl = new List<Dashboard>();
             bool flag = false;
             //items2 = await Table2.Where(Author
             //                   => Author.Id == testlol2).ToCollectionAsync();
