@@ -144,6 +144,7 @@
     <Content Include="Assets\loginButton.png" />
     <Content Include="Assets\loginImg.jpg" />
     <Content Include="Assets\LoginNext.png" />
+    <Content Include="Assets\search-icon-hi.png" />
     <Content Include="Assets\SignupImage.png" />
     <Content Include="Assets\UploadBookImg.png" />
     <Content Include="Assets\writing.jpg" />

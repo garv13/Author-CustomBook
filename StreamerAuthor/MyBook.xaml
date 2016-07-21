@@ -73,26 +73,26 @@
                 
                 <Grid.RowDefinitions>
                     <RowDefinition Height="0.06*"/>
-                  
+                    <RowDefinition Height="0.1*"/>
+
                     <RowDefinition Height="0.8*"/>
                 </Grid.RowDefinitions>
                 <ProgressBar x:Name="Loading" Grid.RowSpan="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Visibility="Collapsed"/>
                 <Border Grid.Row="0" Background="#AD2920">
                 <TextBlock FontSize="36" Foreground="White"  Text="   Publisher Dashboard"  />
                 </Border>
-                <!--<Grid BorderBrush="#FFF" Grid.Row="1" BorderThickness="10" >
+                <Grid Grid.Row="1">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="200"/>
-                        <ColumnDefinition Width="200"/>
-                        <ColumnDefinition Width="200"/>
-                        <ColumnDefinition Width="200"/>
+                        <ColumnDefinition Width="0.6*"/>
+                        <ColumnDefinition Width="0.6*"/>
+                        <ColumnDefinition Width="0.2*"/>
+                        <ColumnDefinition Width="0.6*"/>
                     </Grid.ColumnDefinitions>
-                   
-                    <TextBlock Text="Cover Image" Grid.Column="0" FontSize="35"/>
-                    <TextBlock Text="      Title" Grid.Column="1"  FontSize="35"/>
-                    <TextBlock Text="Downloads" Grid.Column="2"  FontSize="35"/>
-                    <TextBlock Text="Status" Grid.Column="3"  FontSize="35"/>
-                </Grid>-->
+                    <TextBox x:Name="queryBox" Margin="15" PlaceholderText="Search" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="1" TextAlignment="Center" FontSize="{StaticResource SplitViewLargeNavFontSize}" />
+                    <Button Click="Button_Click" Background="#AD2920" Margin="15" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Grid.Column="2"  >
+                        <Image VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Source="Assets/search-icon-hi.png"/>
+                    </Button>
+                </Grid>
                 <GridView    
                     Grid.Row="2"
                         HorizontalAlignment="Stretch"

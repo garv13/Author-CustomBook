@@ -60,7 +60,7 @@ namespace StreamerAuthor
 
                 testlol2 = await Windows.Storage.FileIO.ReadTextAsync(sampleFile2);
                 //we have id
-                await loadDashboard(0);
+                await loadDashboard(0,null);
             }
             catch(Exception)
             {
@@ -70,15 +70,27 @@ namespace StreamerAuthor
             }
         }
 
-        private async Task loadDashboard(int i)
+        private async Task loadDashboard(int i,string query)
         {
-            items2 = await Table2.Where(Author
-                               => Author.Id == testlol2).ToCollectionAsync();
-            Author a = items2[0];
+            bool flag = false;
+            //items2 = await Table2.Where(Author
+            //                   => Author.Id == testlol2).ToCollectionAsync();
+            //Author a = items2[0];
+
             //string[] b = a.books.Split(',');
-            items = await Table.Skip(i*15).Take(15).Where(Book
-                        => Book.PublisherId == a.Id).ToCollectionAsync();
+            if (query == null)
+            {
+                items = await Table.Skip(i * 15).Take(15).Where(Book
+                              => Book.PublisherId == testlol2).ToCollectionAsync();
+            }
+            else
+            {
+                flag = true;
+                items = await Table.Skip(i * 15).Take(15).Where(Book
+                              => Book.PublisherId == testlol2&&Book.Title.Contains(query)).ToCollectionAsync();
+            }
             Dashboard temp;
+            
             foreach (Book lol in items)
             {
                 //if (lol.Id == "A2592E4D-8663-4A2D-869B-CCDE2FB2A039")
@@ -121,8 +133,17 @@ namespace StreamerAuthor
             }
             else
             {
-                MessageDialog msgbox = new MessageDialog("No Book Published");
-                await msgbox.ShowAsync();
+                if (flag)
+                {
+                    MessageDialog msgbox = new MessageDialog("No Book Published with this name");
+                    await msgbox.ShowAsync();
+                }
+                else
+                {
+                    MessageDialog msgbox = new MessageDialog("No Book Published");
+                    await msgbox.ShowAsync();
+                }
+               
                 Loading.Visibility = Visibility.Collapsed;
             }
         }
@@ -172,6 +193,25 @@ namespace StreamerAuthor
                 }
             }
             Frame.Navigate(typeof(Update), send);
+        }
+
+        private async void Button_Click(object sender, RoutedEventArgs e)
+        {
+            if(queryBox.Text.Length!=0)
+            {
+                try
+                {
+                    Loading.Visibility = Visibility.Visible;
+                    Loading.IsIndeterminate = true;
+                    await loadDashboard(0, queryBox.Text);
+                }
+                catch (Exception ex)
+                {
+                    MessageDialog msgbox = new MessageDialog("Sorry can't update now");
+                    await msgbox.ShowAsync();
+                    Loading.Visibility = Visibility.Collapsed;
+                }
+            }
         }
     }
 }
