@@ -1,2 +1,6 @@
-MainPackage=C:\Users\garvj\Desktop\Ebookauthor - Copy\StreamerAuthor\bin\ARM\Release\StreamerAuthor_1.0.10.0_ARM.appx
-SymbolPackage=C:\Users\garvj\Desktop\streamerAuthor\StreamerAuthor_1.0.10.0_Test\StreamerAuthor_1.0.10.0_ARM.appxsym
+MainPackage=C:\Users\garvj\Source\Repos\Author-CustomBook\StreamerAuthor\bin\ARM\Release\StreamerAuthor_1.0.14.0_ARM.appx
+SymbolPackage=C:\Users\garvj\Desktop\streamerAuthor\StreamerAuthor_1.0.14.0_Test\StreamerAuthor_1.0.14.0_ARM.appxsym
+ResourcePack=C:\Users\garvj\Source\Repos\Author-CustomBook\StreamerAuthor\bin\ARM\Release\StreamerAuthor_1.0.14.0_scale-100.appx
+ResourcePack=C:\Users\garvj\Source\Repos\Author-CustomBook\StreamerAuthor\bin\ARM\Release\StreamerAuthor_1.0.14.0_scale-125.appx
+ResourcePack=C:\Users\garvj\Source\Repos\Author-CustomBook\StreamerAuthor\bin\ARM\Release\StreamerAuthor_1.0.14.0_scale-150.appx
+ResourcePack=C:\Users\garvj\Source\Repos\Author-CustomBook\StreamerAuthor\bin\ARM\Release\StreamerAuthor_1.0.14.0_scale-400.appx

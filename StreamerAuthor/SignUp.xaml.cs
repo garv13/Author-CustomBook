@@ -129,12 +129,14 @@ namespace StreamerAuthor
                     await App.MobileService.GetTable<Author>().InsertAsync(a);
                     Loading.Visibility = Visibility.Collapsed;
                     Windows.UI.Popups.MessageDialog mess = new MessageDialog("Author has been created!");
+                    await mess.ShowAsync();
                     Frame.Navigate(typeof(Login));
                     //add object a in cloud
                 }
                 catch(Exception)
                 {
                     MessageDialog mess = new MessageDialog("There has been a problem connecting :(:(");
+                    await mess.ShowAsync();
                     Loading.Visibility = Visibility.Collapsed;
                 }
             }
